@@ -1,23 +1,29 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:ujikom_flutter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:ujikom_flutter/app/modules/login/views/login_view.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
 
-  late Timer _pindah;
+   late Timer _pindah;
+   final authToken = GetStorage();
 
   @override
   void onInit() {
     super.onInit();
-    _pindah = Timer.periodic(
+   _pindah = Timer.periodic(
   const Duration(seconds: 4),
-  (timer) => Get.off(
-    () => const LoginView(),
-    transition: Transition.leftToRight,
-  ),
+  (timer) => authToken.read('access_token') == null
+      ? Get.off(
+          () => const LoginView(),
+          transition: Transition.leftToRight,
+        )
+      : Get.off(() => const DashboardView()),
 );
+
 
   }
 
@@ -28,8 +34,9 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {
+   _pindah.cancel();
     super.onClose();
-    _pindah.cancel();
+
   }
 
 }
