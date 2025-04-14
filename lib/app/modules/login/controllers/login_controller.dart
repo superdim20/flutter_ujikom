@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ujikom_flutter/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:ujikom_flutter/app/utils/api.dart';
+import 'package:ujikom_flutter/home_screen.dart';
 
 class LoginController extends GetxController {
   final _getConnect = GetConnect();

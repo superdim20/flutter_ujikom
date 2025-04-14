@@ -6,6 +6,8 @@ import 'package:ujikom_flutter/app/modules/dashboard/views/index_view.dart';
 import 'package:ujikom_flutter/app/modules/dashboard/views/kategori_view.dart';
 import 'package:ujikom_flutter/app/modules/dashboard/views/profile_view.dart';
 import 'package:ujikom_flutter/app/utils/api.dart';
+import 'package:ujikom_flutter/home_screen.dart';
+import 'package:ujikom_flutter/categories_screen.dart';
 
 
 class DashboardController extends GetxController {
@@ -14,35 +16,35 @@ class DashboardController extends GetxController {
 
   final token = GetStorage().read('access_token');
 
-  var kategoriList;
+  // var kategoriList;
 
-Future<KategoriResponse> getEvent() async {
-  final response = await _getConnect.get(
-    BaseUrl.kategori,
-    headers: {'Authorization': "Bearer $token"},
-    contentType: "application/json",
-  );
-  return KategoriResponse.fromJson(response.body);
-}
-var Kategori = <KategoriResponse>[].obs;
+// Future<KategoriResponse> getEvent() async {
+//   final response = await _getConnect.get(
+//     BaseUrl.kategori,
+//     headers: {'Authorization': "Bearer $token"},
+//     contentType: "application/json",
+//   );
+//   return KategoriResponse.fromJson(response.body);
+// }
+// var Kategori = <KategoriResponse>[].obs;
 
-Future<void> getKategori() async {
-  final response = await _getConnect.get(
-    BaseUrl.kategori,
-    headers: {'Authorization': "Bearer $token"},
-    contentType: "application/json",
-  );
-  final kategoriResponse = KategoriResponse.fromJson(response.body);
-  Kategori.value = kategoriResponse.data ??[];
-}
+// Future<void> getKategori() async {
+//   final response = await _getConnect.get(
+//     BaseUrl.kategori,
+//     headers: {'Authorization': "Bearer $token"},
+//     contentType: "application/json",
+//   );
+//   final kategoriResponse = KategoriResponse.fromJson(response.body);
+//   Kategori.value = kategoriResponse.data ??[];
+// }
 
   void changeIndex(int index) {
     selectedIndex.value = index;
   }
 
   final List<Widget> pages = [
-    IndexView(),
-    KategoriView(),
+    HomePage(),
+    CategoriesScreen(),
     ProfileView(),
   ];
 
