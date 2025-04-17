@@ -8,6 +8,7 @@ import 'package:ujikom_flutter/app/modules/dashboard/views/profile_view.dart';
 import 'package:ujikom_flutter/app/utils/api.dart';
 import 'package:ujikom_flutter/home_screen.dart';
 import 'package:ujikom_flutter/categories_screen.dart';
+import 'package:ujikom_flutter/profile_screen.dart';
 
 
 class DashboardController extends GetxController {
@@ -45,7 +46,7 @@ class DashboardController extends GetxController {
   final List<Widget> pages = [
     HomePage(),
     CategoriesScreen(),
-    ProfileView(),
+    ProfileScreen(),
   ];
 
   
